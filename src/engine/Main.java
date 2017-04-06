@@ -11,6 +11,7 @@ public class Main{
 
     public static void main(String[] args){
          //GLFW must be initialized in the main thread for whatever reason
+
          window = new Window(300, 300, "Title", true);
             new Main();
 

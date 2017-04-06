@@ -2,11 +2,7 @@ package engine;
 
 import org.lwjgl.opengl.GL;
 
-import javax.swing.plaf.synth.SynthEditorPaneUI;
-
-import static org.lwjgl.glfw.GLFW.glfwPollEvents;
-import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
-import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
+import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
 /**
@@ -45,7 +41,7 @@ public class Engine implements Runnable{
         if(osName.contains("Mac")) {
             gameThread.run();
         }else{
-            gameThread.start();
+            gameThread.run();
         }
     }
 
