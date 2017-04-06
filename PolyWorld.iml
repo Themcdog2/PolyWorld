@@ -9,6 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
-    <orderEntry type="library" exported="" name="lwjgl-stable-2017-03-31-custom" level="project" />
+    <orderEntry type="library" name="lwjgl" level="project" />
   </component>
 </module>
