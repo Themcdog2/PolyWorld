@@ -1,5 +1,7 @@
 package engine;
 
+import math.ProjectionMatrix;
+import math.Vector4f;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -14,7 +16,9 @@ public class Engine implements Runnable{
     private Window window;
 
     private Thread gameThread;
+    private Vector4f camera;
 
+    private ProjectionMatrix projectionMatrix = new ProjectionMatrix(camera);
 
 
 
@@ -41,6 +45,7 @@ public class Engine implements Runnable{
         if(osName.contains("Mac")) {
             gameThread.run();
         }else{
+            //Idk about this
             gameThread.run();
         }
     }

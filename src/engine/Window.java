@@ -1,23 +1,23 @@
 package engine;
 
-import org.lwjgl.glfw.*;
-import org.lwjgl.opengl.GL;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.glfw.GLFWWindowCloseCallback;
+import org.lwjgl.glfw.GLFWWindowSizeCallback;
 
-import static java.awt.SystemColor.window;
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.GL_TRUE;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 /**
  * Created by williamallen on 4/4/17.
  */
 public class Window {
-
     long windowHandle;
     private GLFWWindowSizeCallback windowSizeCallback;
     private GLFWWindowCloseCallback windowCloseCallback;
-    private GLFWKeyCallback keyCallback;
     private GLFWErrorCallback errorCallback;
+    private GLFWKeyCallback keyCallback;
 
     private int width;
     private int height;
@@ -30,7 +30,7 @@ public class Window {
 
     public Window(int width, int height, String title, boolean vSync){
 
-    this.width = width;
+        this.width = width;
     this.height = height;
     this.title = title;
 
