@@ -22,12 +22,50 @@
  * SOFTWARE.
  */
 
-package engine;
+package util;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
-public class ShaderManager {
+/**
+ * Created by williamallen on 4/28/17.
+ */
+public class resourceLoader {
 
-    public ShaderManager(){
+    public resourceLoader(){
+
+    }
+
+    public String loadFile(String fileName) throws Exception{
+
+        //String builder for simplicity
+        StringBuilder result = new StringBuilder("");
+
+        //Get file from res
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(fileName).getFile());
+
+        if(file == null){
+            throw new FileNotFoundException("Unable to locate file + " + fileName);
+
+        }
+
+        try (Scanner scanner = new Scanner(file)) {
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                result.append(line).append("\n");
+            }
+
+            scanner.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result.toString();
 
     }
 

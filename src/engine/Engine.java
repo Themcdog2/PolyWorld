@@ -4,21 +4,23 @@ import math.ProjectionMatrix;
 import math.Vector4f;
 import org.lwjgl.opengl.GL;
 
-import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.glfw.GLFW.glfwPollEvents;
+import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
+import static org.lwjgl.opengl.GL11.glClearColor;
 
 /**
  * Created by williamallen on 4/5/17.
  */
 public class Engine implements Runnable{
 
-    private Renderer renderer;
     private Window window;
 
     private Thread gameThread;
     private Vector4f camera;
 
     private ProjectionMatrix projectionMatrix = new ProjectionMatrix(camera);
+    private Shader shaderProgram;
+    private Renderer renderer;
 
 
 
@@ -28,14 +30,21 @@ public class Engine implements Runnable{
         this.renderer = renderer;
         this.window = window;
 
+
+
         init();
 
     }
 
 
     private void init(){
+
+
+
         //Create our game thread and name it
         gameThread = new Thread(this, "GAME_THREAD");
+
+
 
 
         //Weird quirk with GLFW
@@ -48,6 +57,9 @@ public class Engine implements Runnable{
             //Idk about this
             gameThread.run();
         }
+
+
+
     }
 
 
@@ -65,15 +77,16 @@ public class Engine implements Runnable{
         // Set the clear color
         glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
 
+        renderer = new Renderer(window);
 
         // Run the rendering loop until the user presses esc
         while ( !glfwWindowShouldClose(window.windowHandle) ) {
 
             // clear the framebuffer
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            if(renderer != null)
+                renderer.render();
 
-            // swap the color buffers
-            glfwSwapBuffers(window.windowHandle);
+
 
 
             // Poll for window events.

@@ -59,9 +59,6 @@ public class ProjectionMatrix {
 
     }
 
-
-
-
     //Create a transformation function for translation
     private float[][] translate(Vector3f translationVector){
 
@@ -79,9 +76,7 @@ public class ProjectionMatrix {
 
         return translationMatrix;
 
-
     }
-
 
     //Create a transformation function for scaling
     private float[][] scale(Vector3f scalingVector){
@@ -95,7 +90,6 @@ public class ProjectionMatrix {
         return scaleMatrix;
 
     }
-
 
 
 

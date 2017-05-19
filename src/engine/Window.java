@@ -128,9 +128,15 @@ public class Window {
         glfwSetWindowSizeCallback(windowHandle, windowSizeCallback = new GLFWWindowSizeCallback() {
             @Override
             public void invoke(long window, int width, int height) {
+
+
+
                 Window.this.width = width;
                 Window.this.height = height;
                 Window.this.setResized(true);
+
+
+
             }
         });
 
@@ -155,6 +161,17 @@ public class Window {
 
     public void setResized(boolean resized) {
         this.resized = resized;
+    }
+
+    public boolean isResized(){
+        return resized;
+    }
+
+    public int getWidth(){
+        return width;
+    }
+    public int getHeight(){
+        return height;
     }
 
 
